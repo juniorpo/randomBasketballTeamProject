@@ -62,7 +62,7 @@ class _RandomGenerateState extends State<RandomGenerate> {
             controller: _textcontroller,
             decoration: InputDecoration(
                 labelText: 'ชื่อเล่นนักบาส', border: OutlineInputBorder(),
-                enabledBorder: inputBorder()),
+                enabledBorder: inputBorder(),labelStyle: TextStyle(color: Colors.white)),
             style:
                 TextStyle(color: Colors.white70),
           ),
