@@ -67,7 +67,7 @@ class _RandomGenerateState extends State<RandomGenerate> {
                 TextStyle(color: Colors.white70),
           ),
           MaterialButton(onPressed: () {
-            player.add(_textcontroller.text);
+            user = addPlayer();
           },color: Colors.deepOrange,
           child: const Text('เพิมนักบาส',style: TextStyle(color: Colors.black87))),
           Text(
@@ -92,7 +92,7 @@ class _RandomGenerateState extends State<RandomGenerate> {
     );
   }
   addPlayer() {
-  //
+    player.add(_textcontroller.text);
   }
 
   randomPlayer(int length) {
