@@ -52,12 +52,12 @@ class _RandomGenerateState extends State<RandomGenerate> {
       body: Container(
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-              Expanded(child: Container(
+              Container(
                 child: Center(
                   child: Text(user,style: TextStyle(color: Colors.white,
                       fontSize: 50,fontWeight: FontWeight.bold)),
                 ),
-              )),
+              ),
           TextField(
             controller: _textcontroller,
             decoration: InputDecoration(
