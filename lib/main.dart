@@ -51,31 +51,37 @@ class _RandomGenerateState extends State<RandomGenerate> {
       appBar: AppBar(centerTitle: true, title: Text('โปรแกรมการสุ่มทีมบาส')),
       body: Container(
         child:
-            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            Column(mainAxisAlignment: MainAxisAlignment.center,children: [
               Container(
                 child: Center(
                   child: Text(user,style: TextStyle(color: Colors.white,
                       fontSize: 50,fontWeight: FontWeight.bold)),
-                ),
+                ),margin: EdgeInsets.all(100),
               ),
-          TextField(
-            controller: _textcontroller,
-            decoration: InputDecoration(
-                labelText: 'ชื่อเล่นนักบาส', border: OutlineInputBorder(),
-                enabledBorder: inputBorder(),labelStyle: TextStyle(color: Colors.white)),
-            style:
-                TextStyle(color: Colors.white70),
-          ),
+              SizedBox(
+                width: 150,
+                  child: TextField(
+                      controller: _textcontroller,
+                      decoration: InputDecoration(
+                        labelText: 'ชื่อเล่นนักบาส', border: OutlineInputBorder(),
+                        enabledBorder: inputBorder(),labelStyle: TextStyle(color: Colors.white)
+                        ,),
+                      style:
+                      TextStyle(color: Colors.white70),maxLength: 60),
+
+              )
+              ,
           MaterialButton(onPressed: () {
-            user = addPlayer();
+            user = _textcontroller.text;
           },color: Colors.deepOrange,
-          child: const Text('เพิมนักบาส',style: TextStyle(color: Colors.black87))),
+          padding: EdgeInsets.all(20)
+          ,child: const Text('เพิมนักบาส',style: TextStyle(color: Colors.black87))),
           Text(
             player.toString(),
             style: TextStyle(
                 color: Colors.white70,
                 fontSize: 30,
-                fontWeight: FontWeight.bold),
+                fontWeight: FontWeight.bold)
           )
         ]),
       ),
