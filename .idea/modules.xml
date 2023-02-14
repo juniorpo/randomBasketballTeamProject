@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/random_program.iml" filepath="$PROJECT_DIR$/random_program.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/random_program_android.iml" filepath="$PROJECT_DIR$/android/random_program_android.iml" />
     </modules>
   </component>
 </project>

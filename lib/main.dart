@@ -44,6 +44,7 @@ class RandomGenerate extends StatefulWidget {
 class _RandomGenerateState extends State<RandomGenerate> {
   final _textcontroller = TextEditingController();
   List<String> player = [];
+  List<String> randomPlayer = [];
   String user = '';
   @override
   Widget build(BuildContext context) {
@@ -72,23 +73,27 @@ class _RandomGenerateState extends State<RandomGenerate> {
               )
               ,
           MaterialButton(onPressed: () {
-            user = _textcontroller.text;
+            user = addPlayer();
           },color: Colors.deepOrange,
           padding: EdgeInsets.all(20)
-          ,child: const Text('เพิมนักบาส',style: TextStyle(color: Colors.black87))),
+          ,child: const Text('เพิ่มนักบาส',style: TextStyle(color: Colors.black87))),
+          MaterialButton(onPressed: (){
+            player = restorePlayer();
+          },),
           Text(
             player.toString(),
             style: TextStyle(
                 color: Colors.white70,
                 fontSize: 30,
-                fontWeight: FontWeight.bold)
-          )
+                fontWeight: FontWeight.bold,
+                )
+          ),
         ]),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            player = randomPlayer(3);
+            player = randomPlayerFunction(3);
           });
         },
         child: Text('สุ่มทีม'),
@@ -101,8 +106,7 @@ class _RandomGenerateState extends State<RandomGenerate> {
     player.add(_textcontroller.text);
   }
 
-  randomPlayer(int length) {
-    List<String> randomPlayer = [];
+  randomPlayerFunction(int length) {
     Random random = new Random();
     for (String i in player) {
       int value = random.nextInt(player.length);
@@ -110,6 +114,12 @@ class _RandomGenerateState extends State<RandomGenerate> {
       player.remove(player[value]);
     }
     return randomPlayer;
+  }
+
+  restorePlayer(){
+    player.addAll(randomPlayer);
+    randomPlayer.removeRange(0, randomPlayer.length);
+    return player;
   }
 
   OutlineInputBorder inputBorder() {
