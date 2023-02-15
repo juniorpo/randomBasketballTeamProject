@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,29 +8,19 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'โปรแกรมการสุ่มทีมบาส',
         theme: ThemeData(
-            // This is the theme of your application.
-            //
-            // Try running your application with "flutter run". You'll see the
-            // application has a blue toolbar. Then, without quitting the app, try
-            // changing the primarySwatch below to Colors.green and then invoke
-            // "hot reload" (press "r" in the console where you ran "flutter run",
-            // or simply save your changes to "hot reload" in a Flutter IDE).
-            // Notice that the counter didn't reset back to zero; the application
-            // is not restarted.
             primarySwatch: Colors.deepOrange,
-            primaryColor: Colors.deepOrange),
+            textTheme: GoogleFonts.chakraPetchTextTheme()
+        ),
         home: const RandomGenerate(),
         darkTheme: ThemeData.from(
             colorScheme: ColorScheme.fromSwatch(
                 primarySwatch: Colors.deepOrange,
-                backgroundColor: Colors.black87,
+                backgroundColor: Color.fromARGB(221, 10, 10, 24),
                 cardColor: Colors.white)));
   }
 }
@@ -55,7 +46,7 @@ class _RandomGenerateState extends State<RandomGenerate> {
             Column(mainAxisAlignment: MainAxisAlignment.center,children: [
               Container(
                 child: Center(
-                  child: Text(user,style: TextStyle(color: Colors.white,
+                  child: Text(player.toString(),style: TextStyle(color: Colors.white,
                       fontSize: 50,fontWeight: FontWeight.bold)),
                 ),margin: EdgeInsets.all(100),
               ),
@@ -68,26 +59,21 @@ class _RandomGenerateState extends State<RandomGenerate> {
                         enabledBorder: inputBorder(),labelStyle: TextStyle(color: Colors.white)
                         ,),
                       style:
-                      TextStyle(color: Colors.white70),maxLength: 60),
-
+                      TextStyle(color: Colors.white70)),
               )
               ,
           MaterialButton(onPressed: () {
             user = addPlayer();
+            player.last.toString();
           },color: Colors.deepOrange,
           padding: EdgeInsets.all(20)
           ,child: const Text('เพิ่มนักบาส',style: TextStyle(color: Colors.black87))),
           MaterialButton(onPressed: (){
             player = restorePlayer();
-          },),
-          Text(
-            player.toString(),
-            style: TextStyle(
-                color: Colors.white70,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                )
-          ),
+            player.toString();
+          },color: Colors.deepOrange,
+          padding: EdgeInsets.all(20)
+          ,child: const Text('เล่นอีกครั้ง',style: TextStyle(color: Colors.black87))),
         ]),
       ),
       floatingActionButton: FloatingActionButton(
@@ -104,6 +90,7 @@ class _RandomGenerateState extends State<RandomGenerate> {
   }
   addPlayer() {
     player.add(_textcontroller.text);
+    return player;
   }
 
   randomPlayerFunction(int length) {
@@ -118,7 +105,7 @@ class _RandomGenerateState extends State<RandomGenerate> {
 
   restorePlayer(){
     player.addAll(randomPlayer);
-    randomPlayer.removeRange(0, randomPlayer.length);
+    randomPlayer.clear();
     return player;
   }
 
