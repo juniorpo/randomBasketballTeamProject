@@ -17,11 +17,7 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.chakraPetchTextTheme()
         ),
         home: const RandomGenerate(),
-        darkTheme: ThemeData.from(
-            colorScheme: ColorScheme.fromSwatch(
-                primarySwatch: Colors.deepOrange,
-                backgroundColor: Color.fromARGB(221, 10, 10, 24),
-                cardColor: Colors.white)));
+        darkTheme: ThemeData.Dark(););
   }
 }
 
